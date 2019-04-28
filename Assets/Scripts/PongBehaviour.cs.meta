@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 57f0e3533be524143a622f8f04e7a2b7
+timeCreated: 1556436628
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Player_1_Emitter: {instanceID: 0}
+  - Pong: {fileID: 1348319276684276, guid: e34ddbc8523865f40bb4129c5e61a8ee, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
