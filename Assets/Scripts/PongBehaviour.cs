@@ -30,7 +30,7 @@ public class PongBehaviour : MonoBehaviour {
         Rigidbody Temporary_RigidBody;
         Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody>();
         Temporary_RigidBody.AddForce(Throw_Vector);
-        Destroy(Temporary_Bullet_Handler, 10.0f);
+        Destroy(Temporary_Bullet_Handler, 5.0f);
     }
 
     int Get_Player_Factor() {
