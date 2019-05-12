@@ -12,23 +12,30 @@ public class GameController : MonoBehaviour
     private Vector3 Throw_Vector;
     private bool Pong_Exists;
 
+    GameObject Other_Player;
+
     // Start is called before the first frame update
     void Start()
     {
         First_Player_Turn = true;
         Pong_Exists = false;
+        Other_Player = Player_1;
     }
 
     // Update is called once per frame
     void Update() {
-        if (Pong_Exists) {
-            Handle_Throw_Phase();
-        } else {
-            Handle_Player();
+        if (Pong_Exists)
+        {
+            Change_Player_Turn();
+        }
+        else
+        {
+            Handle_Camera_Change();
+            Handle_Pong_Throw();
         }
     }
 
-    private void Handle_Player() {
+    private void Handle_Pong_Throw() {
         GameObject Current_Player;
         if (Input.GetMouseButtonDown(0)) {
             Throw_Vector = Input.mousePosition;
@@ -46,11 +53,15 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void Handle_Throw_Phase() {
+    private void Handle_Camera_Change() {
+        Main_Camera.transform.position = Vector3.Lerp(Main_Camera.transform.position, Other_Player.transform.position, 0.02f);
+        Main_Camera.transform.rotation = Quaternion.Slerp(Main_Camera.transform.rotation, Other_Player.transform.rotation, 0.02f);
+    }
 
-        if (GameObject.Find("Pong(Clone)") == null) {
-            GameObject Other_Player;
-
+    private void Change_Player_Turn()
+    {
+        if (GameObject.Find("Pong(Clone)") == null)
+        {
             if (First_Player_Turn)
             {
                 Other_Player = Player_2;
@@ -59,10 +70,6 @@ public class GameController : MonoBehaviour
             {
                 Other_Player = Player_1;
             }
-
-            Main_Camera.transform.position = Other_Player.transform.position;
-            Main_Camera.transform.rotation = Other_Player.transform.rotation;
-
             First_Player_Turn = !First_Player_Turn;
 
             Pong_Exists = false;
