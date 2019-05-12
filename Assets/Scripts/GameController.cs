@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour
     private bool Pong_Exists;
 
     GameObject Other_Player;
+    public float shakeMagnetude = 0.0001f, shakeTime = 0.1f;
+    Vector3 cameraInitialPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +24,26 @@ public class GameController : MonoBehaviour
         Other_Player = Player_1;
     }
 
+    //public void ShakeIt()
+    //{
+    //    cameraInitialPosition = Main_Camera.transform.position;
+    //    InvokeRepeating("StartCameraShaking", 0f, 2f);
+    //    //Invoke("StopCameraShaking", shakeTime);
+    //}
+
+    //void StartCameraShaking()
+    //{
+    //    float cameraShakingOffsetX = Random.value * shakeMagnetude * 2 - shakeMagnetude;
+    //    float cameraShakingOffsetY = Random.value * shakeMagnetude * 2 - shakeMagnetude;
+    //    Vector3 cameraIntermadiatePosition = Main_Camera.transform.position;
+    //    cameraIntermadiatePosition.x += cameraShakingOffsetX;
+    //    cameraIntermadiatePosition.y += cameraShakingOffsetY;
+    //    Main_Camera.transform.position = cameraIntermadiatePosition;
+    //}
+
     // Update is called once per frame
     void Update() {
+        //ShakeIt();
         if (Pong_Exists)
         {
             Change_Player_Turn();
